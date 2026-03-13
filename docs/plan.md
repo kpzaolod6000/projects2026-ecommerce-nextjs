@@ -8,36 +8,6 @@ Proyecto ecommerce de productos de computación (PCs, Monitores, Teclados, Mouse
 
 ---
 
-## Phase 1 — Bootstrap del proyecto
-
-### Comandos (en orden estricto)
-
-```bash
-cd /home/judal/ecommerce-basic
-
-# 1. Crear app Next.js 15
-npx create-next-app@latest . --typescript --tailwind --eslint --app --import-alias "@/*"
-# (no --src-dir · Turbopack: yes)
-
-# 2. Prisma
-npm install prisma --save-dev && npm install @prisma/client
-npx prisma init --datasource-provider postgresql
-
-# 3. shadcn/ui
-npx shadcn@latest init
-# Style: Default | Base color: Slate | CSS variables: Yes
-
-# 4. Instalar componentes shadcn
-npx shadcn@latest add button card badge input label select sheet tabs \
-  separator avatar dropdown-menu skeleton checkbox slider breadcrumb \
-  scroll-area dialog drawer
-
-# 5. Dependencias adicionales
-npm install lucide-react
-```
-
----
-
 ## Phase 2 — Design Tokens (`app/globals.css`)
 
 Color scheme extraído de la referencia visual:
@@ -238,62 +208,6 @@ export default nextConfig
 
 ---
 
-## Estructura final de carpetas
-
-```
-ecommerce-basic/
-├── app/
-│   ├── globals.css                    ← tokens @theme + :root HSL shadcn
-│   ├── layout.tsx                     ← TopBar + Navbar + Footer
-│   ├── page.tsx                       ← Homepage
-│   ├── products/
-│   │   ├── page.tsx                   ← Listado con filtros
-│   │   └── [slug]/page.tsx            ← Detalle de producto
-│   ├── cart/page.tsx
-│   ├── checkout/page.tsx
-│   ├── account/page.tsx
-│   ├── categories/[slug]/page.tsx
-│   └── search/page.tsx
-├── components/
-│   ├── layout/
-│   │   ├── top-bar.tsx
-│   │   ├── navbar.tsx
-│   │   ├── search-bar.tsx
-│   │   ├── footer.tsx
-│   │   └── mobile-menu.tsx
-│   ├── product/
-│   │   ├── product-card.tsx           ← componente más reutilizado
-│   │   ├── product-grid.tsx
-│   │   ├── product-filters.tsx
-│   │   ├── product-images.tsx
-│   │   ├── product-info.tsx
-│   │   ├── product-badge.tsx
-│   │   ├── star-rating.tsx
-│   │   └── wishlist-button.tsx
-│   ├── cart/
-│   │   ├── cart-item.tsx
-│   │   └── cart-summary.tsx
-│   ├── sections/
-│   │   ├── hero-banner.tsx
-│   │   ├── category-grid.tsx
-│   │   ├── featured-products.tsx
-│   │   └── filter-bar.tsx
-│   └── ui/
-│       ├── price-display.tsx          ← custom
-│       └── [shadcn generados...]
-├── lib/
-│   ├── utils.ts                       ← cn, formatPrice, helpers
-│   └── mock-data.ts                   ← 20 productos, 10 categorías + helpers
-├── types/
-│   └── index.ts                       ← todas las interfaces TypeScript
-├── prisma/
-│   └── schema.prisma                  ← schema completo (sin migrar)
-├── public/images/placeholder.png
-├── next.config.ts
-├── components.json                    ← shadcn config
-└── docs/
-    └── plan.md                        ← este archivo
-```
 
 ---
 
